@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Point</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F7F5EF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;700&display=swap" rel="stylesheet"><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#fff;--ink:#111;--mut:#6b6b6b;--line:#e5e5e5;--fill:#f6f6f6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:15px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.r{position:absolute;opacity:0;pointer-events:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;text-align:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+.s.on{display:flex}
+body.lg .sw{display:none}
+input.in{width:100%;font:inherit;color:var(--ink);background:var(--bg);outline:none}
+input.in:focus{border-color:var(--ink)}
+.sw{display:flex;align-items:center;gap:6px;padding:6px 12px;border-bottom:1px solid var(--line);flex:none;width:100%}
+.who{flex:1;font-size:13px;font-weight:600}
+.sw button{flex:none;padding:0 16px;min-height:40px;line-height:38px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--mut)}
+main{flex:1;min-height:0;width:100%}
+.s{display:none;flex-direction:column;height:100%}
+.top{padding:20px 20px 8px;display:flex;flex-direction:column;gap:12px;flex:none}
+h1{margin:0;font-size:24px;font-weight:600}
+.b{flex:1;overflow:auto;padding:4px 20px 16px;display:flex;flex-direction:column;gap:12px}
+.m{font-size:13px;color:var(--mut)}
+.t{font-weight:600}
+.ph{background:var(--fill);border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:13px}
+.card{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px;min-height:60px}
+.logo{width:44px;height:44px;border-radius:8px;background:var(--fill);border:1px solid var(--line);flex:none}
+.f{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
+.bar{height:4px;background:var(--line);border-radius:2px}
+.bar i{display:block;height:4px;background:var(--ink);border-radius:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:0 14px;height:36px;line-height:34px;font-size:13px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.in{border:1px solid var(--line);border-radius:12px;height:48px;display:flex;align-items:center;padding:0 14px;color:var(--mut)}
+.btn{display:flex;align-items:center;justify-content:center;height:52px;border-radius:12px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);font-weight:600;flex:none}
+.btn.o{background:var(--bg);color:var(--ink)}
+.sp{flex:1}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.st{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:2px}
+.st b{font-size:24px}
+.tabs{display:flex;border-top:1px solid var(--line);padding-top:8px;flex:none}
+.tabs>*{flex:1;text-align:center;font-size:11px;color:var(--mut);min-height:52px}
+.tabs>.on{color:var(--ink);font-weight:600}
+.tabs>*::before{content:"";display:block;width:20px;height:20px;border:1.5px solid currentColor;border-radius:5px;margin:0 auto 4px}
+.me{border-color:var(--ink)}
+.n{width:24px;font-weight:600}
+.av{width:36px;height:36px;border-radius:50%;background:var(--fill);border:1px solid var(--line);flex:none}
+.cov{height:150px;border-radius:0;border-width:0 0 1px;position:relative;flex:none;align-items:flex-start;justify-content:flex-start;padding:16px 20px}
+.cov button{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:0 14px;height:36px;line-height:34px}
+
+:root{--bg:#f6f6f6;--card:#fff;--ink:#0b0b0b;--mut:#6b6b6b;--line:#e8e8e8;--fill:#efefef;--sh:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);--sh2:0 2px 4px rgba(0,0,0,.08),0 14px 32px rgba(0,0,0,.12)}
+body,.s{background:var(--bg)}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic.lg{width:32px;height:32px}.ic.ch{color:#a0a0a0;width:18px;height:18px}
+h1{letter-spacing:-.02em;font-weight:700}
+.sw{background:var(--card);box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.sw button{display:inline-flex;align-items:center;gap:6px}
+.card{background:var(--card);border-radius:16px;box-shadow:var(--sh);transition:transform .15s,box-shadow .15s}
+button.card:active,.btn:active{transform:scale(.99)}
+@media (hover:hover){button.card:hover{box-shadow:var(--sh2);transform:translateY(-1px)}}
+.logo{display:flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(145deg,#fff,#e8e8e8);color:var(--ink);box-shadow:inset 0 1px 0 #fff}
+.logo.dk{background:linear-gradient(145deg,#2c2c2c,#0b0b0b);color:#fff;border-color:#0b0b0b;box-shadow:var(--sh)}
+.av{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff,#e2e2e2);color:#444}
+.bar,.bar i{height:6px;border-radius:3px}.bar{background:#e6e6e6}.bar i{background:linear-gradient(90deg,#555,#0b0b0b)}
+.chip{background:var(--card);box-shadow:var(--sh);font-weight:500}
+.chip.on{background:linear-gradient(180deg,#2c2c2c,#0b0b0b);color:#fff;border-color:#0b0b0b}
+.btn{gap:8px;background:linear-gradient(180deg,#2c2c2c,#0b0b0b);border-color:#0b0b0b;box-shadow:0 4px 14px rgba(0,0,0,.25);border-radius:14px}
+.btn.o{background:var(--card);color:var(--ink);box-shadow:var(--sh);border-color:var(--line)}
+.in{gap:10px;background:var(--card);border-radius:14px;box-shadow:var(--sh)}
+.in input{flex:1;min-width:0;width:auto;border:0;outline:0;background:none;font:inherit;color:var(--ink);height:100%}
+.in:focus-within{border-color:var(--ink)}
+.st{background:var(--card);box-shadow:var(--sh);border-radius:16px;gap:6px}.st .ic{color:#444}
+.tabs{background:var(--card);box-shadow:0 -6px 20px rgba(0,0,0,.05)}
+.tabs>*{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.tabs>*::before{display:none}.tabs .ic{width:22px;height:22px}.tabs>.on .ic{stroke-width:2.25}
+.cov{background:linear-gradient(135deg,#0b0b0b,#3d3d3d)}.cov button{display:inline-flex;align-items:center;gap:6px;box-shadow:var(--sh)}
+.map{height:200px;flex:none;color:#222;background:linear-gradient(0deg,rgba(0,0,0,.05) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(145deg,#f5f5f5,#e0e0e0);box-shadow:var(--sh)}
+.chart{height:150px;flex:none;padding:14px;background:var(--card);box-shadow:var(--sh)}.chart svg{width:100%;height:100%}
+#s-c-scan .ph{background:linear-gradient(145deg,#141414,#2e2e2e);color:#d6d6d6;border:0;box-shadow:var(--sh2)}
+.pill{background:var(--fill);color:var(--ink);font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;white-space:nowrap}.pill.dk{background:#0b0b0b;color:#fff}
+#qr{box-shadow:var(--sh2);background:#fff}.me{box-shadow:var(--sh2)}
+:root{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (hover:hover){.card:hover,.chip:hover,.sw button:hover{border-color:var(--ink)}.btn:hover{opacity:.88}}
+@media (max-width:359px){.top{padding:16px 14px 8px}.b{padding:4px 14px 14px}h1{font-size:21px}}
+@media (max-height:500px){.top{padding-top:10px}.tabs>*{min-height:44px}.cov{height:90px}}
+@media (min-width:700px){
+.top{padding:28px 32px 10px}.b{padding:6px 32px 28px}
+.tabs{justify-content:center}.tabs>*{max-width:160px}
+#s-wallet .b,#s-discover .b,#s-o-rewards .b,#s-o-staff .b,#s-c-history .b,#s-o-dash .b{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-content:start}
+#s-wallet .b>.m,#s-discover .b>.ph,#s-o-rewards .b>.m,#s-o-rewards .b>.t,#s-o-staff .b>.m,#s-o-dash .b>.g,#s-o-dash .b>.ph,#s-o-dash .b>.t{grid-column:1/-1}
+#s-o-rewards .sp,#s-o-staff .sp{display:none}
+#s-o-rewards .b>.btn,#s-o-staff .b>.btn{grid-column:1/-1;max-width:360px}
+.g{grid-template-columns:repeat(4,1fr)}
+#s-redeem .top,#s-redeem .b,#s-c-confirm .top,#s-c-confirm .b,#s-me .top,#s-me .b,#s-business .b{max-width:560px;width:100%;margin-left:auto;margin-right:auto}
+#s-c-scan .b{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px;align-content:start}
+#s-c-scan .b>.ph{grid-row:span 3;height:min(60dvh,520px)!important}
+#s-c-scan .b>:not(.ph){grid-column:2}
+}
+@media (min-width:900px){
+.sw{padding:8px 24px}
+.s:has(>.tabs).on{display:grid;grid-template-columns:240px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+.s:has(>.tabs)>.tabs{grid-column:1;grid-row:1/3;flex-direction:column;justify-content:flex-start;border-top:0;border-right:1px solid var(--line);padding:24px 12px;gap:4px}
+.s:has(>.tabs)>.top{grid-column:2;grid-row:1}
+.s:has(>.tabs)>.b{grid-column:2;grid-row:2;min-height:0}
+.tabs>*{display:flex;align-items:center;text-align:left;min-height:44px;padding:0 14px;border-radius:10px;font-size:14px;max-width:none;flex:none}
+.tabs>*::before{margin:0 12px 0 0;flex:none}
+.tabs>.on{background:var(--fill)}
+.top{padding:32px 40px 12px}.b{padding:8px 40px 40px}
+h1{font-size:28px}
+#s-login.on{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr)}
+#s-login .top{grid-column:1;grid-row:1;background:var(--fill);border-right:1px solid var(--line);justify-content:center;padding:64px!important}
+#s-login .b{grid-column:2;grid-row:1;justify-content:center;max-width:440px;width:100%;margin:0 auto}
+#s-business.on{display:grid;grid-template-columns:minmax(320px,42%) minmax(0,1fr)}
+#s-business .cov{height:auto;border-width:0 1px 0 0;grid-column:1;padding:24px 32px}
+#s-business .b{grid-column:2;max-width:none;margin:0;padding:48px 56px}
+}
+
+@media (min-width:900px){
+.tabs>*{flex-direction:row;justify-content:flex-start;gap:12px}
+.tabs>.on{background:var(--fill)}
+.s:has(>.tabs)>.tabs{box-shadow:none}
+#s-login .top{background:linear-gradient(135deg,#0b0b0b,#2e2e2e);color:#fff;border-right:0}
+#s-login .top .m{color:#bdbdbd}#s-login .logo.dk{background:#fff;color:#0b0b0b}
+}
+
+
+/* ===== Point identity v2: flat, plain ===== */
+:root{--bg:#F7F5EF;--card:#F7F5EF;--ink:#111;--mut:#5c5a52;--line:#111;--fill:#EDEAE0;--y:#FFD400;--bd:2px solid #111;color-scheme:light}
+body,.s{background:var(--bg);font-family:"Readex Pro",system-ui,-apple-system,"Segoe UI",Roboto,Tahoma,sans-serif;font-weight:400}
+h1,.t,.btn,.brand,.hero-word,.st b,.pill,.chip,.n,#bn,.tabs>.on{font-weight:700}
+h1{letter-spacing:-.03em;font-size:26px;line-height:1.15}
+.m{color:var(--mut)}
+.ic{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.ic.ch{color:var(--ink)}
+.sw{background:var(--bg);border-bottom:var(--bd);box-shadow:none}
+.sw button,.lang{display:inline-flex;align-items:center;gap:6px;background:var(--bg);color:var(--ink);border:var(--bd);border-radius:12px;box-shadow:none;font-weight:400;font-size:13px;min-height:40px;padding:0 14px;line-height:1}
+.who{flex:1;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;color:var(--mut)}
+@media (max-width:480px){.who{display:none}.sw{justify-content:space-between}.brand{margin-inline-end:auto}}
+/* wordmark + coin */
+.brand,.hero-word{display:inline-flex;align-items:baseline;direction:ltr;letter-spacing:-.05em;line-height:1}
+.brand{font-size:22px}.hero-word{font-size:48px}
+.brand i,.hero-word i{display:inline-block;width:.34em;height:.34em;border-radius:50%;background:var(--y);border:0;box-shadow:0 .06em 0 #111;margin-left:.1em}
+.coin{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--y);border:2px solid #111;box-shadow:0 3px 0 #111;font-weight:700;font-size:28px;color:var(--ink);flex:none}
+.stk{display:inline-block;align-self:flex-start;background:none;border:0;box-shadow:none;padding:0;transform:none;font-weight:700;font-size:15px;color:var(--ink)}
+/* surfaces: flat */
+.card,.st,.chart,.map,.in,.ph{background:var(--bg);border:var(--bd);border-radius:12px;box-shadow:none;transform:none}
+.card{transition:background-color .12s}
+.st{gap:4px}.st b{font-size:30px;letter-spacing:-.03em}.st .ic{color:var(--ink)}
+.logo,.av{background:var(--fill);border:var(--bd);border-radius:12px;box-shadow:none;color:var(--ink)}
+.logo.dk{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.av{border-radius:50%}
+.bar,.bar i{height:10px;border-radius:99px}
+.bar{background:var(--bg);border:2px solid var(--ink);overflow:hidden}
+.bar i{background:var(--ink);height:100%}
+html[dir=rtl] .bar i{margin-inline-start:auto}
+.chip{background:var(--bg);border:var(--bd);box-shadow:none;font-weight:400;border-radius:99px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.btn{background:var(--y);color:var(--ink);border:var(--bd);border-radius:12px;box-shadow:none;font-size:16px;gap:8px}
+.btn.o{background:var(--bg);color:var(--ink)}
+.in{box-shadow:none;color:var(--ink)}
+.in:focus-within{background:#fff}
+.in input::placeholder{color:#7a776c}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.pill{background:var(--bg);color:var(--ink);border:2px solid var(--ink);font-size:12px;border-radius:99px;padding:3px 10px}
+.pill.dk{background:var(--ink);color:var(--bg)}
+.tabs{background:var(--bg);border-top:var(--bd);box-shadow:none}
+.tabs>*{color:var(--mut);border:0;border-radius:10px;font-weight:400}
+.tabs>.on{color:var(--ink);background:none;font-weight:700}
+.tabs>.on .ic{stroke-width:2.25}
+.cov{background:var(--ink);border-color:var(--ink)}
+.cov button{background:var(--bg);color:var(--ink);box-shadow:none;border:var(--bd)}
+.map{background:linear-gradient(0deg,rgba(0,0,0,.1) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,rgba(0,0,0,.1) 1px,transparent 1px) 0 0/32px 32px,var(--bg)}
+.chart rect{fill:var(--ink)}
+#s-c-scan .ph{background:var(--ink);color:var(--bg);border:0}
+#qr{box-shadow:none;border:var(--bd)!important;background:#fff}
+.me{border-color:var(--ink);background:var(--fill)}
+/* hover: quiet */
+@media (hover:hover) and (pointer:fine){
+.card:hover,.st:hover{background:#fff;transform:none;box-shadow:none}
+button.card:hover{background:#fff}
+.btn:hover{background:#FFDE33;transform:none;box-shadow:none;opacity:1}
+.btn.o:hover,.chip:hover,.sw button:hover,.lang:hover{background:#fff;transform:none;box-shadow:none}
+.chip.on:hover{background:var(--ink)}
+.tabs>*:hover{background:var(--fill);box-shadow:none}
+}
+.btn:active,button.card:active,.chip:active{transform:scale(.99)}
+.tabs>*,.chip,.btn,.card[data-go]{cursor:pointer}
+/* large screens */
+@media (min-width:900px){
+#s-login .top{background:var(--bg);color:var(--ink);border-right:var(--bd)}
+html[dir=rtl] #s-login .top{border-right:0;border-left:var(--bd)}
+#s-login .top .m{color:var(--mut)}
+.s:has(>.tabs)>.tabs{border-top:0;border-right:var(--bd);background:var(--bg)}
+html[dir=rtl] .s:has(>.tabs)>.tabs{border-right:0;border-left:var(--bd)}
+.tabs>.on{background:var(--fill)}
+#s-business .cov{border-width:0 2px 0 0;border-right:var(--bd)}
+html[dir=rtl] #s-business .cov{border-right:0;border-left:var(--bd)}
+}
+html[dir=rtl] #s-business .cov{align-items:flex-start}
+@media (min-width:1500px){.b,.top{max-width:1200px}.s:has(>.tabs)>.top,.s:has(>.tabs)>.b{margin-inline:auto;width:100%}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13v4"/><path d="M3 7v11a2 2 0 0 0 2 2h15V9H5a2 2 0 0 1-2-2z"/><circle cx="16.5" cy="14.5" r="1"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 13v4M8 20h8M10 17h4"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8M8 8a2.5 2.5 0 1 1 4-2 2.5 2.5 0 1 1 4 2"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol><symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM16 11h2a2 2 0 0 1 0 4h-2M7 3v2M11 3v2"/></symbol><symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 7.5 20 18M8 16.5 20 6"/></symbol><symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2zM4 16c2 1.5 3 1.5 4 0s2-1.5 4 0 3 1.5 4 0 2-1.5 4 0M12 12V8M12 5.5v.5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></symbol><symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3v7a2 2 0 0 0 4 0V3M8 3v18M17 3c-2 2-3 5-3 8h3v10"/></symbol><symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M6 7v10M3 9v6M18 7v10M21 9v6M6 12h12"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h3v3M20 14v.01M14 20h3M20 17v3"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3M16 8l4 4-4 4M20 12H9"/></symbol><symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol><symbol id="i-chevd" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol><symbol id="i-arrowl" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol><symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9V7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2a3 3 0 0 0 0 6v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2a3 3 0 0 0 0-6zM14 6v12"/></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol><symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 3l3 3-3 3M4 11V9a3 3 0 0 1 3-3h13M7 21l-3-3 3-3M20 13v2a3 3 0 0 1-3 3H4"/></symbol></defs></svg>
+
+<nav class="sw"><span class="brand" aria-label="Point">point<i></i></span><span class="who" id="who"></span><button type="button" class="lang" data-lang aria-label="Language"><span>العربية</span></button><button type="button" data-go="login" data-out><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg><span>Log out</span></button></nav>
+
+<main>
+<section class="s on" id="s-login">
+<div class="top" style="padding-top:48px"><button type="button" class="lang" data-lang style="align-self:flex-start" aria-label="Language"><span>العربية</span></button><span class="hero-word">point<i></i></span><span class="stk">Bring them back.</span><h1>Welcome back</h1><span class="m">Sign in to continue</span></div>
+<div class="b"><div class="in"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><input id="em" type="email" autocomplete="username" placeholder="Email"></div><div class="in"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><input id="pw" type="password" autocomplete="current-password" placeholder="Password"></div><span class="m" id="err" role="alert"></span>
+<button type="button" class="btn" id="signin"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>Sign in</span></button>
+<span class="m" style="margin-top:8px">Demo accounts. Tap one to fill the form.</span>
+<button type="button" class="card" data-fill="sara@demo.app"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Customer</span><span class="m">sara@demo.app, Sara Ahmed</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-fill="owner@demo.app"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Owner</span><span class="m">owner@demo.app, Omar Hassan</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-fill="cashier@demo.app"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Cashier</span><span class="m">cashier@demo.app, Mona Ali</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<span class="m">Password for all demo accounts: demo1234</span></div>
+</section>
+
+<section class="s" id="s-wallet">
+<div class="top"><h1>My wallet</h1><div class="chips"><button type="button" class="chip on" data-chip>All</button><button type="button" class="chip" data-chip>Food</button><button type="button" class="chip" data-chip>Beauty</button><button type="button" class="chip" data-chip>Services</button></div></div>
+<div class="b"><span class="m">Each balance belongs to one business only</span>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-coffee"/></svg></div><div class="f"><span class="t">Coffee A</span><span class="m" id="wp">320 pts, 180 to next reward</span><div class="bar"><i style="width:64%"></i></div></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-scissors"/></svg></div><div class="f"><span class="t">Barbershop B</span><span class="m">4 of 6 visits</span><div class="bar"><i style="width:66%"></i></div></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-cake"/></svg></div><div class="f"><span class="t">Bakery C</span><span class="m">90 pts, 410 to next reward</span><div class="bar"><i style="width:18%"></i></div></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></div><div class="f"><span class="t">Clinic D</span><span class="m">1 of 5 visits</span><div class="bar"><i style="width:20%"></i></div></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button></div>
+<nav class="tabs"><button type="button" class="on" data-go="wallet"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span>Wallet</span></button><button type="button" data-go="discover"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg><span>Discover</span></button><button type="button" data-go="rank"><svg class="ic" aria-hidden="true"><use href="#i-trophy"/></svg><span>Rank</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span></button></nav>
+</section>
+
+<section class="s" id="s-discover">
+<div class="top"><h1>Discover</h1><div class="in"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input id="q" placeholder="Search places, services"></div><div class="chips"><button type="button" class="chip on" data-chip>All</button><button type="button" class="chip" data-chip>Food</button><button type="button" class="chip" data-chip>Beauty</button><button type="button" class="chip" data-chip>Services</button></div></div>
+<div class="b"><div class="ph map"><svg class="ic lg" aria-hidden="true"><use href="#i-pin"/></svg></div>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-sparkle"/></svg></div><div class="f"><span class="t">Salon E</span><span class="m">0.4 km, 1 pt per EGP 10</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></div><div class="f"><span class="t">Restaurant F</span><span class="m">1.1 km, free dessert at 300 pts</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button>
+<button type="button" class="card" data-go="business"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-dumbbell"/></svg></div><div class="f"><span class="t">Gym G</span><span class="m">1.8 km, 5th visit free</span></div><svg class="ic ch" aria-hidden="true"><use href="#i-chev"/></svg></button></div>
+<nav class="tabs"><button type="button" data-go="wallet"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span>Wallet</span></button><button type="button" class="on" data-go="discover"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg><span>Discover</span></button><button type="button" data-go="rank"><svg class="ic" aria-hidden="true"><use href="#i-trophy"/></svg><span>Rank</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span></button></nav>
+</section>
+
+<section class="s" id="s-business">
+<div class="ph cov"><button type="button" data-go="wallet"><svg class="ic" aria-hidden="true"><use href="#i-arrowl"/></svg><span>Back</span></button></div>
+<div class="b" style="padding-top:16px"><div style="display:flex;gap:14px;align-items:center"><div class="logo dk" style="width:56px;height:56px"><svg class="ic lg" aria-hidden="true"><use href="#i-coffee"/></svg></div><div class="f"><span class="t" style="font-size:20px">Coffee A</span><span class="m">Cafe, 3 branches</span></div></div>
+<div class="card" style="flex-direction:column;align-items:stretch"><div><b style="font-size:28px" id="bn">320</b> <span class="m">pts</span></div><div class="bar"><i style="width:64%"></i></div><span class="m" id="bp">180 pts to Free drink</span></div>
+<span class="t">Rewards</span>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free drink</span><span class="m">500 pts</span></div><span class="pill">Locked</span></div>
+<button type="button" class="card" data-go="redeem"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free pastry</span><span class="m">250 pts</span></div><span class="pill dk">Ready</span></button>
+<div class="sp"></div><button type="button" class="btn" data-go="redeem"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><span>Show my code</span></button></div>
+</section>
+
+<section class="s" id="s-redeem">
+<div class="top"><h1>Free pastry</h1><span class="m">Coffee A, 250 pts</span></div>
+<div class="b" style="align-items:center;gap:20px"><canvas id="qr" width="240" height="240" style="margin-top:24px;flex:none;max-width:100%;border:1px solid var(--line);border-radius:12px"></canvas>
+<span class="m" style="text-align:center">Show this to the cashier. Points are deducted only after the business confirms.</span>
+<div class="sp"></div><button type="button" class="btn o" data-go="business" style="width:100%"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Cancel</span></button></div>
+</section>
+
+<section class="s" id="s-rank">
+<div class="top"><h1>Local top 10</h1><div class="chips"><button type="button" class="chip on" data-chip>This month</button><button type="button" class="chip" data-chip>All time</button></div></div>
+<div class="b"><span class="m">Based on verified activity, not spendable points</span>
+<div class="card"><span class="n">1</span><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><span class="t f">Customer 1</span><span class="m">940 pts</span></div>
+<div class="card"><span class="n">2</span><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><span class="t f">Customer 2</span><span class="m">870 pts</span></div>
+<div class="card"><span class="n">3</span><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><span class="t f">Customer 3</span><span class="m">810 pts</span></div>
+<div class="sp"></div><div class="card me"><span class="n">27</span><span class="t f">You</span><span class="m">310 pts</span></div></div>
+<nav class="tabs"><button type="button" data-go="wallet"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span>Wallet</span></button><button type="button" data-go="discover"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg><span>Discover</span></button><button type="button" class="on" data-go="rank"><svg class="ic" aria-hidden="true"><use href="#i-trophy"/></svg><span>Rank</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span></button></nav>
+</section>
+
+<section class="s" id="s-o-dash">
+<div class="top"><h1>Dashboard</h1><div class="in"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span style="flex:1">All branches</span><svg class="ic" aria-hidden="true"><use href="#i-chevd"/></svg></div></div>
+<div class="b"><div class="g"><div class="st"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><b>00</b><span class="m">Members</span></div><div class="st"><svg class="ic" aria-hidden="true"><use href="#i-activity"/></svg><b>00</b><span class="m">Visits this week</span></div><div class="st"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><b id="rd">00</b><span class="m">Redemptions</span></div><div class="st"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg><b>00</b><span class="m">Repeat visits</span></div></div>
+<div class="ph chart"><svg viewBox="0 0 280 110" preserveAspectRatio="none" role="img" aria-label="Repeat visits chart"><rect x="8" y="70" width="22" height="40" rx="5" fill="#d6d6d6"/><rect x="42" y="48" width="22" height="62" rx="5" fill="#c2c2c2"/><rect x="76" y="62" width="22" height="48" rx="5" fill="#adadad"/><rect x="110" y="30" width="22" height="80" rx="5" fill="#939393"/><rect x="144" y="44" width="22" height="66" rx="5" fill="#767676"/><rect x="178" y="18" width="22" height="92" rx="5" fill="#525252"/><rect x="212" y="52" width="22" height="58" rx="5" fill="#2e2e2e"/><rect x="246" y="36" width="22" height="74" rx="5" fill="#0b0b0b"/></svg></div><span class="t" id="rr">Recent redemptions</span>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free pastry</span><span class="m">Customer 27</span></div><span class="pill">Today</span></div>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free drink</span><span class="m">Customer 14</span></div><span class="pill">Today</span></div></div>
+<nav class="tabs"><button type="button" class="on" data-go="o-dash"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg><span>Dashboard</span></button><button type="button" data-go="o-rewards"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span>Rewards</span></button><button type="button" data-go="o-staff"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Staff</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>Settings</span></button></nav>
+</section>
+
+<section class="s" id="s-o-rewards">
+<div class="top"><h1>Reward setup</h1><div class="chips"><button type="button" class="chip on" data-chip>Points</button><button type="button" class="chip" data-chip>Milestones</button></div></div>
+<div class="b"><div class="card" style="flex-direction:column;align-items:flex-start;gap:2px"><span class="m">Earning rule</span><span class="t">1 pt per EGP 10 spent</span></div>
+<span class="t">Rewards</span>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free drink</span><span class="m">500 pts</span></div><span class="pill">Edit</span></div>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free pastry</span><span class="m">250 pts</span></div><span class="pill">Edit</span></div>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free haircut</span><span class="m">EGP 1,000 eligible purchases</span></div><span class="pill">Edit</span></div>
+<div class="sp"></div><button type="button" class="btn" id="addrw"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Add reward</span></button></div>
+<nav class="tabs"><button type="button" data-go="o-dash"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg><span>Dashboard</span></button><button type="button" class="on" data-go="o-rewards"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span>Rewards</span></button><button type="button" data-go="o-staff"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Staff</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>Settings</span></button></nav>
+</section>
+
+<section class="s" id="s-o-staff">
+<div class="top"><h1>Staff and permissions</h1></div>
+<div class="b"><span class="m">Cashiers can scan and confirm redemptions only</span>
+<div class="card"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Staff member 1</span><span class="m">Owner, all branches</span></div></div>
+<div class="card"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Staff member 2</span><span class="m">Manager, Branch 1</span></div></div>
+<div class="card"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Staff member 3</span><span class="m">Cashier, Branch 1</span></div></div>
+<div class="card"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t">Staff member 4</span><span class="m">Cashier, Branch 2</span></div></div>
+<div class="sp"></div><button type="button" class="btn" id="inv"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Invite staff</span></button></div>
+<nav class="tabs"><button type="button" data-go="o-dash"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg><span>Dashboard</span></button><button type="button" data-go="o-rewards"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span>Rewards</span></button><button type="button" class="on" data-go="o-staff"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Staff</span></button><button type="button" data-go="me"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>Settings</span></button></nav>
+</section>
+
+<section class="s" id="s-c-scan">
+<div class="top"><h1>Scan code</h1><span class="m">Branch 1, Cashier</span></div>
+<div class="b"><div class="ph" style="height:clamp(220px,42dvh,380px);flex:none;overflow:hidden"><video id="v" playsinline muted style="width:100%;height:100%;object-fit:cover;display:none"></video><span id="cm" style="padding:0 24px;text-align:center"><svg class="ic lg" aria-hidden="true"><use href="#i-camera"/></svg><br><span id="ct">Camera is off</span></span></div><button type="button" class="btn" id="camb"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><span>Open camera</span></button><button type="button" class="btn o" data-go="c-confirm"><svg class="ic" aria-hidden="true"><use href="#i-scan"/></svg><span>Simulate scan</span></button><div class="in"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><input id="mc" placeholder="Or enter code manually" enterkeyhint="go"></div></div>
+<nav class="tabs"><button type="button" class="on" data-go="c-scan"><svg class="ic" aria-hidden="true"><use href="#i-scan"/></svg><span>Scan</span></button><button type="button" data-go="c-history"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>History</span></button></nav>
+</section>
+
+<section class="s" id="s-c-confirm">
+<div class="top"><h1>Confirm redemption</h1><span class="m">Branch 1, Cashier</span></div>
+<div class="b"><div class="card" style="flex-direction:column;align-items:flex-start;gap:2px"><span class="m">Customer</span><span class="t">Customer 27</span><span class="m" style="margin-top:10px">Reward</span><span class="t">Free pastry, 250 pts</span></div>
+<span class="m" id="cn">Points are deducted when you confirm.</span>
+<div class="sp"></div><button type="button" class="btn" id="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Confirm</span></button><button type="button" class="btn o" id="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Decline</span></button></div>
+<nav class="tabs"><button type="button" class="on" data-go="c-scan"><svg class="ic" aria-hidden="true"><use href="#i-scan"/></svg><span>Scan</span></button><button type="button" data-go="c-history"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>History</span></button></nav>
+</section>
+
+<section class="s" id="s-c-history">
+<div class="top"><h1>Today</h1></div>
+<div class="b" id="hist">
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free pastry</span><span class="m">Customer 27</span></div><span class="pill dk">Confirmed</span></div>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free drink</span><span class="m">Customer 14</span></div><span class="pill dk">Confirmed</span></div>
+<div class="card"><div class="logo"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></div><div class="f"><span class="t">Free pastry</span><span class="m">Customer 8</span></div><span class="pill">Declined</span></div></div>
+<nav class="tabs"><button type="button" data-go="c-scan"><svg class="ic" aria-hidden="true"><use href="#i-scan"/></svg><span>Scan</span></button><button type="button" class="on" data-go="c-history"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>History</span></button></nav>
+</section>
+<section class="s" id="s-me"><div class="top"><h1>Account</h1></div><div class="b"><div class="card"><div class="av"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div><div class="f"><span class="t" id="mn"></span><span class="m" id="mm"></span></div></div><button type="button" class="btn o" id="rs"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg><span>Reset demo data</span></button><div class="sp"></div><button type="button" class="btn o" data-back><svg class="ic" aria-hidden="true"><use href="#i-arrowl"/></svg><span>Back</span></button><button type="button" class="btn" data-go="login" data-out><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg><span>Log out</span></button></div></section>
+</main>
+<script>
+const A={'sara@demo.app':{n:'Sara Ahmed',h:'wallet',l:'Customer'},'owner@demo.app':{n:'Omar Hassan',h:'o-dash',l:'Owner'},'cashier@demo.app':{n:'Mona Ali',h:'c-scan',l:'Cashier'}};
+const CAT={'Coffee A':'Food','Barbershop B':'Beauty','Bakery C':'Food','Clinic D':'Services','Salon E':'Beauty','Restaurant F':'Food','Gym G':'Services'};
+let U=null,S={pts:320,red:0},ms=null,tm=null;
+const $=q=>document.querySelector(q);
+try{Object.assign(S,JSON.parse(localStorage.getItem('lp')||'{}'))}catch(e){}
+const sv=()=>{try{localStorage.setItem('lp',JSON.stringify(S))}catch(e){}};
+document.body.classList.add('lg');
+function draw(){$('#wp').textContent=S.pts+' pts, '+Math.max(0,500-S.pts)+' to next reward';$('#bn').textContent=S.pts;$('#bp').textContent=Math.max(0,500-S.pts)+' pts to Free drink';$('#rd').textContent=String(S.red).padStart(2,'0');$('#who').textContent=U?U.l+': '+U.n:'';if(U){$('#mn').textContent=U.n;$('#mm').textContent=U.l}}
+function go(id){stopCam();document.querySelectorAll('.s').forEach(x=>x.classList.toggle('on',x.id==='s-'+id));document.body.classList.toggle('lg',id==='login');if(id==='redeem')qr();if(id==='c-confirm')$('#cn').textContent='Points are deducted when you confirm.';draw()}
+function filt(sc){const c=sc.querySelector('.chip.on'),k=c?c.textContent:'All',q=sc.querySelector('input'),t=q?q.value.toLowerCase():'';sc.querySelectorAll('.card').forEach(d=>{const n=(d.querySelector('.t')||{}).textContent||'';if(CAT[n])d.hidden=!((k==='All'||CAT[n]===k)&&n.toLowerCase().includes(t))})}
+function row(a,b,c){const d=document.createElement('div');d.className='card';d.innerHTML='<div class="f"><span class="t"></span><span class="m"></span></div><span class="m"></span>';const e=d.querySelectorAll('span');e[0].textContent=a;e[1].textContent=b;e[2].textContent=c;if(c)e[2].className='pill'+(c==='Confirmed'?' dk':'');else e[2].remove();return d}
+function qr(){const c=$('#qr'),x=c.getContext('2d'),n=25,s=240/n;x.fillStyle='#fff';x.fillRect(0,0,240,240);x.fillStyle='#111';let h=S.red+7;const r=()=>(h=(h*1103515245+12345)&0x7fffffff)/0x7fffffff;for(let i=0;i<n;i++)for(let j=0;j<n;j++){const f=(i<8&&j<8)||(i<8&&j>16)||(i>16&&j<8);if(!f&&r()>.5)x.fillRect(j*s,i*s,s,s)}[[0,0],[0,18],[18,0]].forEach(([a,b])=>{x.fillStyle='#111';x.fillRect(b*s,a*s,7*s,7*s);x.fillStyle='#fff';x.fillRect((b+1)*s,(a+1)*s,5*s,5*s);x.fillStyle='#111';x.fillRect((b+2)*s,(a+2)*s,3*s,3*s)})}
+async function cam(){try{ms=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});$('#v').srcObject=ms;$('#v').style.display='block';$('#cm').style.display='none';await $('#v').play();$('#camb span').textContent='Close camera';if('BarcodeDetector' in window){const d=new BarcodeDetector({formats:['qr_code']});tm=setInterval(async()=>{try{if((await d.detect($('#v'))).length)go('c-confirm')}catch(e){}},500)}}catch(e){stopCam();$('#ct').textContent='Camera unavailable here. Open the installed app over HTTPS and allow camera access, or use Simulate scan.'}}
+function stopCam(){clearInterval(tm);if(ms){ms.getTracks().forEach(t=>t.stop());ms=null}$('#v').style.display='none';$('#cm').style.display='';$('#ct').textContent='Camera is off';$('#camb span').textContent='Open camera'}
+function login(){const a=A[$('#em').value.trim().toLowerCase()];if(a&&$('#pw').value==='demo1234'){U=a;$('#err').textContent='';go(a.h)}else $('#err').textContent='Wrong email or password.'}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+if(t.dataset.fill){$('#em').value=t.dataset.fill;$('#pw').value='demo1234';$('#err').textContent='';return}
+if(t.hasAttribute('data-chip')){t.parentNode.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===t));const sc=t.closest('.s');if(sc.id==='s-wallet'||sc.id==='s-discover')filt(sc);return}
+if(t.hasAttribute('data-back'))return go(U.h);
+if(t.hasAttribute('data-out')){U=null;$('#pw').value=''}
+if(t.dataset.go)go(t.dataset.go)});
+$('#signin').onclick=login;$('#pw').onkeydown=e=>{if(e.key==='Enter')login()};
+$('#q').oninput=()=>filt($('#s-discover'));
+$('#mc').onkeydown=e=>{if(e.key==='Enter'&&e.target.value.trim())go('c-confirm')};
+$('#camb').onclick=()=>ms?stopCam():cam();
+$('#ok').onclick=()=>{if(S.pts<250){$('#cn').textContent='Not enough points for this reward.';return}S.pts-=250;S.red++;sv();$('#hist').prepend(row('Free pastry','Sara Ahmed','Confirmed'));$('#rr').after(row('Free pastry','Sara Ahmed','Today'));go('c-history')};
+$('#no').onclick=()=>{$('#hist').prepend(row('Free pastry','Sara Ahmed','Declined'));go('c-scan')};
+$('#addrw').onclick=()=>{const n=prompt(tr('Reward name'));if(!n)return;const p=prompt(tr('Points needed'),'300')||'300';$('#s-o-rewards .sp').before(row(n,p+' pts','Edit'))};
+$('#inv').onclick=()=>{const m=prompt(tr('Staff email'));if(!m)return;$('#s-o-staff .sp').before(row(m,'Cashier, Branch 1',''))};
+$('#rs').onclick=()=>{S={pts:320,red:0};sv();draw()};
+
+const AR={"Bring them back.":"رجّعهم تاني.","Welcome back":"أهلاً بعودتك","Sign in to continue":"سجّل دخولك للمتابعة","Email":"البريد الإلكتروني","Password":"كلمة المرور","Sign in":"دخول","Demo accounts. Tap one to fill the form.":"حسابات تجريبية. اضغط على واحد لتعبئة النموذج.","Customer":"عميل","Owner":"صاحب المحل","Cashier":"كاشير","Sara Ahmed":"سارة أحمد","Omar Hassan":"عمر حسن","Mona Ali":"منى علي","sara@demo.app, Sara Ahmed":"sara@demo.app، سارة أحمد","owner@demo.app, Omar Hassan":"owner@demo.app، عمر حسن","cashier@demo.app, Mona Ali":"cashier@demo.app، منى علي","Password for all demo accounts: demo1234":"كلمة المرور لكل الحسابات: demo1234","Log out":"تسجيل خروج","My wallet":"محفظتي","All":"الكل","Food":"أكل","Beauty":"جمال","Services":"خدمات","Each balance belongs to one business only":"كل رصيد يخص محل واحد فقط","Coffee A":"كافيه أ","Barbershop B":"حلاق ب","Bakery C":"مخبز ج","Clinic D":"عيادة د","Salon E":"صالون هـ","Restaurant F":"مطعم و","Gym G":"جيم ز","Wallet":"المحفظة","Discover":"اكتشف","Rank":"الترتيب","Profile":"حسابي","Search places, services":"ابحث عن أماكن وخدمات","Cafe, 3 branches":"كافيه، 3 فروع","Rewards":"المكافآت","Free drink":"مشروب مجاني","Free pastry":"معجنات مجانية","Free haircut":"حلاقة مجانية","Locked":"مقفول","Ready":"جاهز","Show my code":"اعرض الكود بتاعي","Back":"رجوع","Cancel":"إلغاء","Show this to the cashier. Points are deducted only after the business confirms.":"اعرض الكود للكاشير. النقاط بتتخصم بعد ما المحل يؤكد بس.","Local top 10":"أفضل 10 في منطقتك","This month":"الشهر ده","All time":"كل الوقت","Based on verified activity, not spendable points":"حسب النشاط المؤكد، مش النقاط القابلة للصرف","Customer 1":"عميل 1","Customer 2":"عميل 2","Customer 3":"عميل 3","Customer 27":"عميل 27","Customer 14":"عميل 14","Customer 8":"عميل 8","You":"أنت","Dashboard":"لوحة التحكم","All branches":"كل الفروع","Members":"الأعضاء","Visits this week":"زيارات الأسبوع","Redemptions":"الاستبدالات","Repeat visits":"زيارات متكررة","Recent redemptions":"آخر الاستبدالات","Today":"النهاردة","Reward setup":"إعداد المكافآت","Points":"نقاط","Milestones":"مراحل","Earning rule":"قاعدة الكسب","1 pt per EGP 10 spent":"نقطة لكل 10 جنيه","Edit":"تعديل","Add reward":"أضف مكافأة","EGP 1,000 eligible purchases":"مشتريات مؤهلة بـ 1,000 جنيه","Staff and permissions":"الموظفين والصلاحيات","Cashiers can scan and confirm redemptions only":"الكاشير يقدر يسكان ويأكد الاستبدال بس","Staff member 1":"موظف 1","Staff member 2":"موظف 2","Staff member 3":"موظف 3","Staff member 4":"موظف 4","Owner, all branches":"صاحب المحل، كل الفروع","Manager, Branch 1":"مدير، فرع 1","Cashier, Branch 1":"كاشير، فرع 1","Cashier, Branch 2":"كاشير، فرع 2","Invite staff":"ادعُ موظف","Settings":"الإعدادات","Scan code":"سكان الكود","Branch 1, Cashier":"فرع 1، كاشير","Camera is off":"الكاميرا مقفولة","Open camera":"افتح الكاميرا","Close camera":"اقفل الكاميرا","Simulate scan":"سكان تجريبي","Or enter code manually":"أو اكتب الكود يدوياً","Scan":"سكان","History":"السجل","Confirm redemption":"تأكيد الاستبدال","Reward":"المكافأة","Free pastry, 250 pts":"معجنات مجانية، 250 نقطة","Points are deducted when you confirm.":"النقاط بتتخصم لما تأكد.","Not enough points for this reward.":"النقاط مش كفاية للمكافأة دي.","Confirm":"تأكيد","Decline":"رفض","Confirmed":"مؤكد","Declined":"مرفوض","Account":"الحساب","Reset demo data":"إعادة ضبط البيانات التجريبية","Wrong email or password.":"البريد أو كلمة المرور غلط.","Camera unavailable here. Open the installed app over HTTPS and allow camera access, or use Simulate scan.":"الكاميرا مش متاحة هنا. افتح التطبيق المثبّت على HTTPS واسمح بالكاميرا، أو استخدم السكان التجريبي.","Coffee A, 250 pts":"كافيه أ، 250 نقطة","Reward name":"اسم المكافأة","Points needed":"النقاط المطلوبة","Staff email":"إيميل الموظف","pts":"نقطة","Language":"اللغة","Staff":"الموظفين"};
+const RX=[[/^(Customer|Owner|Cashier): (.+)$/,(a,b)=>(AR[a]||a)+': '+(AR[b]||b)],[/^(\d+) pts, (\d+) to next reward$/,(a,b)=>a+' نقطة، باقي '+b+' للمكافأة'],[/^(\d+) pts to Free drink$/,a=>'باقي '+a+' نقطة للمشروب المجاني'],[/^(\d+) pts$/,a=>a+' نقطة'],[/^(\d+) of (\d+) visits$/,(a,b)=>a+' من '+b+' زيارات'],[/^([\d.]+) km, 1 pt per EGP 10$/,a=>a+' كم، نقطة لكل 10 جنيه'],[/^([\d.]+) km, free dessert at 300 pts$/,a=>a+' كم، حلوى مجانية عند 300 نقطة'],[/^([\d.]+) km, 5th visit free$/,a=>a+' كم، الزيارة الخامسة مجاناً'],[/^(\d+) pts to Free drink$/,a=>a],[/^Cafe, 3 branches$/,()=>'']];
+let LANG=(()=>{try{return localStorage.getItem('pl')||'en'}catch(e){return 'en'}})();
+const ORIG=new WeakMap();let busy=false;
+function tr(s){const k=s.trim();if(!k)return s;if(AR[k])return s.replace(k,AR[k]);for(const [r,f] of RX){const m=k.match(r);if(m){const o=f(...m.slice(1));if(o)return s.replace(k,o)}}return s}
+function walk(n){if(n.nodeType===3){let o=ORIG.get(n);if(o===undefined||(n.nodeValue!==o.t)){o={e:n.nodeValue,t:n.nodeValue};ORIG.set(n,o)}if(LANG==='ar'){const v=tr(o.e);n.nodeValue=v;o.t=v}else{n.nodeValue=o.e;o.t=o.e}return}
+if(n.nodeType!==1||/^(SCRIPT|STYLE|CANVAS)$/.test(n.tagName))return;
+if(n.placeholder!==undefined&&n.tagName==='INPUT'){if(!n.dataset.ph)n.dataset.ph=n.placeholder;n.placeholder=LANG==='ar'?tr(n.dataset.ph):n.dataset.ph}
+n.childNodes.forEach(walk)}
+function applyLang(){busy=true;const h=document.documentElement;h.lang=LANG;h.dir=LANG==='ar'?'rtl':'ltr';document.querySelectorAll('[data-lang]').forEach(b=>{b.querySelector('span').textContent=LANG==='ar'?'English':'العربية'});walk(document.body);MO.takeRecords();document.title=LANG==='ar'?'بوينت':'Point';busy=false}
+const MO=new MutationObserver(()=>{if(busy)return;busy=true;try{walk(document.body)}finally{MO.takeRecords();busy=false}});MO.observe(document.body,{childList:true,subtree:true,characterData:true});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(!b)return;LANG=LANG==='ar'?'en':'ar';try{localStorage.setItem('pl',LANG)}catch(e){}applyLang()});
+
+applyLang();draw();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
